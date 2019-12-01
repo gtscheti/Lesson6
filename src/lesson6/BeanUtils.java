@@ -4,27 +4,27 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class BeanUtils {
-    public static void assign (Object to, Object from) throws Exception {
-        System.out.println("START");
+    public void assign (Object to, Object from) throws Exception {
+        //System.out.println("START");
 
         for (Method getm : from.getClass().getMethods()) {
             String gName = getm.getName();
             if (null != isGetter(getm)) {
-                System.out.println("getter:" + gName);
+                //System.out.println("getter:" + gName);
                 for (Method setm : to.getClass().getMethods()) {
                     String sName = setm.getName();
                     if (null != isSetter(setm) && isSetter(setm).equals(isGetter(getm))) {
-                        System.out.println("setter:" + sName);
+                        //System.out.println("setter:" + sName);
                         try {
                             Object g = getm.invoke(from, getm.getParameters());
-                            System.out.println(g);
+                            //System.out.println(g);
                             setm.invoke(to, g);
                         } catch (InvocationTargetException e) {
                             System.out.println("InvocationTargetException");
                         } catch (IllegalAccessException e) {
-                            System.out.println("InvocationTargetException");
+                            System.out.println("IllegalAccessException");
                         } catch (IllegalArgumentException e) {
-                            System.out.println("non-compatible parameter:" +getm.getName() + getm.getReturnType());
+                            System.out.println("Cannot assign non-compatible parameter: "+from.getClass()+", method:" +getm.getName() + ", type: " +getm.getReturnType());
                         }
                     }
                 }

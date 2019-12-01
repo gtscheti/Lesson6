@@ -34,7 +34,7 @@ public class Animal {
     public void setColor(String color) {
         this.color = color;
     }
-    public void show() {
-        System.out.println("Name: "+Name+", age: "+age+", color: "+color);
+    public void show(String msg) {
+        System.out.println(msg+"// Name: "+Name+", age: "+age+", color: "+color);
     }
 }

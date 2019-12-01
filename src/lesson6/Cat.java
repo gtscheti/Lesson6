@@ -2,7 +2,7 @@ package lesson6;
 
 public class Cat {
     private String Name;
-    private Number age;
+    private Double age;
     private String color;
     private Integer weight;
 
@@ -21,11 +21,11 @@ public class Cat {
         Name = name;
     }
 
-    public Number getAge() {
+    public Double getAge() {
         return age;
     }
 
-    public void setAge(Number age) {
+    public void setAge(Double age) {
         this.age = age;
     }
 
@@ -45,7 +45,7 @@ public class Cat {
         this.weight = weight;
     }
 
-    public void show() {
-        System.out.println("Name: "+Name+", age: "+age+", color: "+color+", weight: "+weight);
+    public void show(String msg) {
+        System.out.println(msg+"// Name: "+Name+", age: "+age+", color: "+color+", weight: "+weight);
     }
 }
